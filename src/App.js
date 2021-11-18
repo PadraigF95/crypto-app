@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import {BrowserRouter as Router, Route } from 'react-router-dom';
 import Coins from './components/Coins';
 import Header from './components/Header';
+import Coin from './components/Coin';
 
 
 function App() {
@@ -28,7 +29,9 @@ function App() {
       console.log(coins)
   return (
     <div className="container mx-auto">
+      <Router>
         
+        <Route exact path="/" >
             <div >
               <h1 className="text-center pt-6"> Search for a currency</h1>
               <form className="flex flex-col justify-center items-center">
@@ -55,7 +58,12 @@ function App() {
             />
           )
         })}
-       
+        </Route>
+           <Route path="/coins/:id" children={<Coin />}>
+
+           </Route>
+         
+       </Router>
 
     </div>
   );
