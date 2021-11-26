@@ -239,7 +239,7 @@ const monthlyPrice = [];
 
     return (
         <div className="container mx-auto pt-8">
-            <Link to="/">
+            <Link to="/" className="pl-4">
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded md:px-8 md:sticky left-16">Home</button>
             </Link>
             <div className="pt-6">
@@ -248,9 +248,9 @@ const monthlyPrice = [];
             </div>
 
         <div className="sm:flex flex-col-reverse">
-            <div className=" lg:absolute top-32 left-2/3 sm:pt-12">
-                <div className="sm:text-center bg-blue-900 md:rounded-lg border-solid border-4 border-black md:p-6">
-                    <p className="text-center text-2xl font-black pb-4 underline">Socials</p>
+            <div className=" lg:absolute top-32 left-2/3 sm:pt-12 sm:ml-4 sm:mr-4">
+                <div className="sm:text-center bg-blue-900 md:rounded-lg border-solid border-4 border-black md:p-6 sm:pb-4 sm:pt-4">
+                    <p className="text-center text-2xl font-black md:pb-4 sm:pb-2 underline">Socials</p>
                 <p>Twitter Followers: {community_data.twitter_followers.toLocaleString()}</p>
                 <p>Reddit Subscribers: {community_data.reddit_subscribers.toLocaleString()}</p>
                 <a href = {`${links.subreddit_url}`} target="_blank" rel="noreferrer" className="lg:pl-20 text-blue-600 hover:text-red-600">Reddit</a> <br />
@@ -265,8 +265,8 @@ const monthlyPrice = [];
            
             </div>
 
-            <div className="lg:absolute top-32 left-1/3 lg:pl-28 bg-blue-900 md:rounded-lg border-solid border-4 border-black md:p-3">
-                <p className="text-2xl font-black lg:pb-4 sm:text-center underline">{name} Info</p>
+            <div className="lg:absolute top-32 left-1/3 lg:pl-28 bg-blue-900 md:rounded-lg border-solid border-4 border-black md:p-3 sm:pb-4 sm:pt-4 sm:ml-4 sm:mr-4">
+                <p className="text-2xl font-black lg:pb-4 sm:text-center underline sm:pb-2">{name} Info</p>
                 <div className="sm:text-center ">
                 {name} in circulation:{market_data.circulating_supply.toLocaleString()}
                 </div>
@@ -289,9 +289,9 @@ const monthlyPrice = [];
            </div>
            <div className="lg:sticky bottom-64 h-auto mt-8">
                <p className="text-center lg:text-2xl lg:font-black lg:pb-4">About</p>
-               <div className ="text-xs md:pl-16"dangerouslySetInnerHTML={{__html: readMore ? description.en: DOMPurify.sanitize(description.en.substring(0,400))}}></div>
+               <div className ="text-xs md:pl-16 sm:pl-4 sm:pr-4"dangerouslySetInnerHTML={{__html: readMore ? description.en: DOMPurify.sanitize(description.en.substring(0,400))}}></div>
 
-               <button className="underline text-blue-600 md:pl-16" onClick={() => setReadMore(!readMore)}>
+               <button className="underline text-blue-600 md:pl-16 sm:pl-4" onClick={() => setReadMore(!readMore)}>
                     {readMore ? 'show less' : ' read more'}
                 </button>
            </div>
