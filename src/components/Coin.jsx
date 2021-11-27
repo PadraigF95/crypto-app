@@ -244,7 +244,7 @@ const monthlyPrice = [];
 
 
     return (
-        <div className="container mx-auto pt-8">
+        <div className="container mx-auto pt-8 bg-background">
             <Link to="/" className="pl-4">
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded md:px-8 md:sticky left-16">Home</button>
             </Link>
