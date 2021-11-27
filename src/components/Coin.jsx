@@ -3,7 +3,8 @@ import { Link, useParams } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import { Tabs, Tab } from '@material-ui/core'
 import { Line } from 'react-chartjs-2';
-
+import RedditIcon from '@material-ui/icons/Reddit';
+import TwitterIcon from '@material-ui/icons/Twitter';
 
 const Coin = () => {
 
@@ -256,10 +257,10 @@ const monthlyPrice = [];
             <div className=" lg:absolute top-32 left-2/3 sm:pt-12 sm:ml-4 sm:mr-4">
                 <div className="sm:text-center bg-blue-900 md:rounded-lg border-solid border-4 border-black md:p-6 sm:pb-4 sm:pt-4">
                     <p className="text-center text-2xl font-black md:pb-4 sm:pb-2 underline">Socials</p>
-                <p>Twitter Followers: {community_data.twitter_followers.toLocaleString()}</p>
-                <p>Reddit Subscribers: {community_data.reddit_subscribers.toLocaleString()}</p>
-                <a href = {`${links.subreddit_url}`} target="_blank" rel="noreferrer" className="lg:pl-20 text-blue-600 hover:text-red-600">Reddit</a> <br />
-                <a href = {`https://twitter.com/${links.twitter_screen_name}`} target="_blank" rel="noreferrer" className="lg:pl-20 text-blue-600 hover:text-red-600">Twitter</a>
+                <p className="font-medium md:text-center">Twitter Followers: {community_data.twitter_followers.toLocaleString()}</p>
+                <p className="lg:pb-2 font-medium md:text-center">Reddit Subscribers: {community_data.reddit_subscribers.toLocaleString()}</p>
+                <button className="bg-white hover:bg-red-700  font-bold px-4 border border-black rounded lg:ml-4 text-blue-600"><RedditIcon className="pb-1"/><a href = {`${links.subreddit_url}`} target="_blank" rel="noreferrer" className=" hover:text-white">Reddit</a></button>
+                <button className="bg-white hover:bg-red-700 text-blue-600 font-bold px-4 border border-black rounded lg:ml-2"><TwitterIcon className="pb-1"/><a href = {`https://twitter.com/${links.twitter_screen_name}`} target="_blank" rel="noreferrer" className="  hover:text-white">Twitter</a></button>
                 </div>
                 <div className="sm:text-center">
              
@@ -272,16 +273,16 @@ const monthlyPrice = [];
 
             <div className="lg:absolute top-32 left-1/3 lg:pl-28 bg-blue-900 md:rounded-lg border-solid border-4 border-black md:p-3 sm:pb-4 sm:pt-4 sm:ml-4 sm:mr-4">
                 <p className="text-2xl font-black lg:pb-4 sm:text-center underline sm:pb-2">{name} Info</p>
-                <div className="sm:text-center ">
-                {name} in circulation:{market_data.circulating_supply.toLocaleString()}
+                <div className="sm:text-center md:pr-20 font-medium ">
+                {name} in circulation: {market_data.circulating_supply.toLocaleString()}
                 </div>
 
-                <div className="sm:text-center">
+                <div className="sm:text-center font-medium">
                     <p> All Time High: €{ath.toLocaleString()}</p>
                     <p>All Time Low: €{atl.toLocaleString()}</p>
                 </div>
 
-                <div className="sm:text-center" >
+                <div className="sm:text-center font-medium" >
                     <p>Current Price: €{current_price.toLocaleString()}</p>
                     <p>Market Cap: €{market_cap.toLocaleString()}</p>
                 </div>
