@@ -35,7 +35,7 @@ function App() {
             <div >
               <h1 className="text-center pt-6"> Search for a currency</h1>
               <form className="flex flex-col justify-center items-center">
-                <input type="text" placeholder="search" className="w-1/4 bg-blue-50"  onChange={handleChange} />
+                <input type="text" placeholder="search" className="md:w-1/4 sm:w-1/2 sm:pt-2 sm:pb-2 bg-blue-50"  onChange={handleChange} />
               </form>
 
               <Header />

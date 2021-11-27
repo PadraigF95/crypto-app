@@ -2,6 +2,7 @@ import React,{useState, useEffect} from 'react';
 import { Link, useParams } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import { Tabs, Tab } from '@material-ui/core'
+import { Line } from 'react-chartjs-2';
 
 
 const Coin = () => {
@@ -13,6 +14,7 @@ const Coin = () => {
     const [market, setMarket] = useState([]);
     const [daily, setDaily] = useState([]);
     const [monthly, setMonthly] = useState([]);
+    const [selectedTab, setSelectedTab] = useState(0);
 
     const url =`https://api.coingecko.com/api/v3/coins/${id}`;
     const url2 =`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=eur&days=6&interval=daily`
@@ -70,6 +72,9 @@ const Coin = () => {
         }
     }
 
+    const handleChange = (event, newValue) => {
+        setSelectedTab(newValue)
+    };
    
 
     useEffect(() => {
@@ -294,6 +299,77 @@ const monthlyPrice = [];
                <button className="underline text-blue-600 md:pl-16 sm:pl-4" onClick={() => setReadMore(!readMore)}>
                     {readMore ? 'show less' : ' read more'}
                 </button>
+           </div>
+
+           <div>
+           <Tabs value={selectedTab} onChange={handleChange} centered >
+                  <Tab label ="Daily"/>
+                  <Tab label ="Weekly" />
+                  <Tab label = "Monthly"/>
+              </Tabs>
+              {selectedTab === 0 &&  <div>
+                 <Line 
+                   data={{
+                    labels:hourlyTime,
+                   
+                    datasets:[
+                        {
+                            label:["Price"],
+                            data:hourlyPrice ,
+                           
+                           borderColor: "green",
+                            
+                        }
+                    ]
+                }}
+               
+                height={200}
+                width={400} 
+                />
+             </div>}
+             {selectedTab === 1 && <div>
+          <Line 
+            data={{
+                labels:weeklyTime,
+               
+                datasets:[
+                    {
+                        label:["Price"],
+                        data:dailyPrice ,
+                       
+                       borderColor: "green",
+                        
+                    }
+                ]
+            }}
+           
+            height={200}
+            width={400} 
+            
+             />
+          </div>}
+
+          {selectedTab === 2 &&   <div>
+                 <Line 
+                   data={{
+                    labels:monthlyTime,
+                   
+                    datasets:[
+                        {
+                            label:["Price"],
+                            data:monthlyPrice ,
+                           
+                           borderColor: "green",
+                            
+                        }
+                    ]
+                }}
+               
+                height={200}
+                width={400} 
+                />
+             </div> }
+             
            </div>
             
         </div>
