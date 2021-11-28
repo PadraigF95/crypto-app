@@ -1,16 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Footer from './Footer'
 
 
 export const Coins = ({ id,name, image, symbol, price, volume, priceChange, marketCap, rank}) => {
 
+   
+
     return (
         <div className="container mx-auto pt-12">
+            
             <div >
                 <div className=" sm:flex sm:flex-col sm:items-center justify-center    md:flex md:flex-row  align-middle sm: text-center">
                     <p className="md:w-20 sm:pr-48">{rank}</p>
 
-                    <img src={image} alt={name} className="w-20 h-20"  />
+                    <img src={image} alt={name} className="w-30 h-10"  />
                     <Link to={`/coins/${id}`} key={name} style={{ textDecoration: 'none'}}>
 
                     <h1 className="md:w-20 md:pl-6 text-blue-600 underline sm:pb-2">{name}</h1>
@@ -28,9 +32,13 @@ export const Coins = ({ id,name, image, symbol, price, volume, priceChange, mark
                         €{marketCap.toLocaleString()}
                     </p>
                 </div>
+               
             </div>
             
+            
+            
         </div>
+        
     )
 }
 

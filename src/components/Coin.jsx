@@ -6,6 +6,7 @@ import { Line } from 'react-chartjs-2';
 import RedditIcon from '@material-ui/icons/Reddit';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import Footer from './Footer';
+import { CircularProgress } from '@material-ui/core';
 
 const Coin = () => {
 
@@ -97,7 +98,10 @@ const Coin = () => {
     }, []);
 
     if(loading){
-        return 'loading...'
+        return <div className="absolute top 50%">
+            
+            <CircularProgress  />
+            </div>
     }
 
     const {
@@ -157,62 +161,63 @@ const monthlyPrice = [];
 
     if(market_data.ath === undefined){
         return(
-            <div>
-                loading
+            <div className="absolute top 50%">
+                <CircularProgress />
             </div>
         )
     }else if(links.homepage === undefined){
         return(
-            <div>
-                loading
+            <div className="absolute top 50%">
+                <CircularProgress />
             </div>
         )
     }else if(market_data.circulating_supply === undefined){
             return(
-                <div>
-                    loading
+                <div className="absolute top 50%">
+                   <CircularProgress />
                 </div>
             )
     }else if(market_data.atl === undefined){
         return(
-            <div>
-                loading
+            <div className="absolute top 50%">
+                <CircularProgress />
             </div>
         )
     }else if(market_data.current_price === undefined){
         return(
-            <div>
-                loading
+            <div className="absolute top 50%">
+                <CircularProgress />
             </div>
         )
     } else if(market_data.market_cap === undefined){
         return(
-            <div>
-                loading
+            <div className="absolute top 50%">
+               <CircularProgress />
             </div>
         )
   
     }else if(newPrices === undefined){
         return(
-            <div>
-                loading
+            <div className="absolute top 50%">
+                <CircularProgress />
             </div>
         )
     }else if(daily.prices === undefined) {
-        <div>
-            loading
+        <div className="absolute top 50%">
+            <CircularProgress />
         </div>
     }else if(monthly.prices === undefined) {
-            <div>
-                loading
+            <div className="absolute top 50%">
+               <CircularProgress />
             </div>
     }
     
 
     if(loading){
         return(
-            <div>
-                loading...
+            <div className="absolute top 50%">
+
+                <CircularProgress />
             </div>
         )
     }
@@ -250,18 +255,18 @@ const monthlyPrice = [];
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded md:px-8 md:sticky left-16">Home</button>
             </Link>
             <div className="pt-6">
-                <p className="sm:uppercase sm:text-xl lg:hidden sm:text-center" >{name}</p>
-                <img src={image.large} alt="" className="md:pl-8 sm:block sm:ml-auto sm:mr-auto sm:w-2/4 sm:pb-12"/>
+                <p className="sm:uppercase sm:text-xl lg:hidden sm:text-center md:uppercase md: text-xl md: text-center" >{name}</p>
+                <img src={image.large} alt="crypto" className="md:mr-auto md:ml-auto md:block sm:block sm:ml-auto sm:mr-auto sm:w-2/4 sm:pb-12 lg:relative right-1/3"/>
             </div>
 
-        <div className="sm:flex flex-col-reverse">
-            <div className=" lg:absolute top-32 left-2/3 sm:pt-12 sm:ml-4 sm:mr-4">
-                <div className="sm:text-center  md:rounded-lg border-solid border-4 border-black md:p-6 sm:pb-4 sm:pt-4">
-                    <p className="text-center text-2xl font-black md:pb-4 sm:pb-2 underline">Socials</p>
+        <div className="sm:flex flex-col-reverse md:mb-4">
+            <div className=" lg:absolute top-32 left-2/3 sm:pt-12 sm:ml-4 sm:mr-4 ">
+                <div className="sm:text-center  md:rounded-lg border-solid border-4 border-black md:p-6 sm:pb-4 sm:pt-4 md:mb-8 md:ml-4 md:mr-4 lg:ml-12">
+                    <p className="text-center text-2xl font-black md:pb-1 sm:pb-2 underline lg:relative -top-2">Socials</p>
                 <p className="font-medium md:text-center">Twitter Followers: {community_data.twitter_followers.toLocaleString()}</p>
-                <p className="lg:pb-2 font-medium md:text-center">Reddit Subscribers: {community_data.reddit_subscribers.toLocaleString()}</p>
-                <button className="bg-white hover:bg-red-700  font-bold px-4 border border-black rounded lg:ml-4 text-blue-600"><RedditIcon className="pb-1"/><a href = {`${links.subreddit_url}`} target="_blank" rel="noreferrer" className=" hover:text-white">Reddit</a></button>
-                <button className="bg-white hover:bg-red-700 text-blue-600 font-bold px-4 border border-black rounded lg:ml-2"><TwitterIcon className="pb-1"/><a href = {`https://twitter.com/${links.twitter_screen_name}`} target="_blank" rel="noreferrer" className="  hover:text-white">Twitter</a></button>
+                <p className="lg:pb-2 font-medium md:text-center md:mb-2">Reddit Subscribers: {community_data.reddit_subscribers.toLocaleString()}</p>
+                <button className="bg-white hover:bg-red-700  font-bold px-4 border border-black rounded  text-blue-600 md:relative md:left-1/3 lg:px-2 lg:relative lg:left-4 lg:mb-4"><RedditIcon className="pb-1"/><a href = {`${links.subreddit_url}`} target="_blank" rel="noreferrer" className=" hover:text-white">Reddit</a></button>
+                <button className="bg-white hover:bg-red-700 text-blue-600 font-bold px-4 border border-black rounded  md:relative left-1/3 md:ml-4 lg:px-2 lg:left-4"><TwitterIcon className="pb-1"/><a href = {`https://twitter.com/${links.twitter_screen_name}`} target="_blank" rel="noreferrer" className="  hover:text-white">Twitter</a></button>
                 </div>
                 <div className="sm:text-center">
              
@@ -272,18 +277,18 @@ const monthlyPrice = [];
            
             </div>
 
-            <div className="lg:absolute top-32 left-1/3 lg:pl-28  md:rounded-lg border-solid border-4 border-black md:p-3 sm:pb-4 sm:pt-4 sm:ml-4 sm:mr-4">
-                <p className="text-2xl font-black lg:pb-4 sm:text-center underline sm:pb-2">{name} Info</p>
-                <div className="sm:text-center md:pr-20 font-medium ">
+            <div className="lg:absolute lg:top-32 lg:left-1/3 md:rounded-lg border-solid border-4 border-black md:p-3 sm:pb-4 sm:pt-4 sm:ml-4 sm:mr-4 md:ml-4 md:mr-4 lg:pr-10 lg:pl-10 2xl:absolute 2xl:top-32 2xl: 2xl:">
+                <p className="text-2xl font-black lg:pb-4 sm:text-center underline sm:pb-2 md: text-center md:pb-1 ">{name} Info</p>
+                <div className="sm:text-center font-medium md:text-center ">
                 {name} in circulation: {market_data.circulating_supply.toLocaleString()}
                 </div>
 
-                <div className="sm:text-center font-medium">
+                <div className="sm:text-center font-medium md:text-center">
                     <p> All Time High: €{ath.toLocaleString()}</p>
                     <p>All Time Low: €{atl.toLocaleString()}</p>
                 </div>
 
-                <div className="sm:text-center font-medium" >
+                <div className="sm:text-center font-medium md:text-center" >
                     <p>Current Price: €{current_price.toLocaleString()}</p>
                     <p>Market Cap: €{market_cap.toLocaleString()}</p>
                 </div>
@@ -294,16 +299,16 @@ const monthlyPrice = [];
            </div>
           
            </div>
-           <div className="">
-               <p className="text-center lg:text-2xl lg:font-black lg:pb-4">About</p>
-               <div className ="text-xs font-medium md:pl-16 sm:pl-4 sm:pr-4"dangerouslySetInnerHTML={{__html: readMore ? description.en: DOMPurify.sanitize(description.en.substring(0,400))}}></div>
+           <div className="md:mb-6">
+               <p className="text-center lg:text-2xl lg:font-black lg:pb-4 md:font-black md:text-2xl md:pb-1">About</p>
+               <div className ="text-xs font-medium md:ml-12 md:mr-12 sm:pl-4 sm:pr-4 md:text-base"dangerouslySetInnerHTML={{__html: readMore ? description.en: DOMPurify.sanitize(description.en.substring(0,400))}}></div>
 
-               <button className="underline text-blue-600 md:pl-16 sm:pl-4" onClick={() => setReadMore(!readMore)}>
+               <button className="underline text-blue-600 md:pl-12 sm:pl-4" onClick={() => setReadMore(!readMore)}>
                     {readMore ? 'show less' : ' read more'}
                 </button>
            </div>
 
-           <div>
+           <div className="md:ml-8 md:mr-8">
            <Tabs value={selectedTab} onChange={handleChange} centered >
                   <Tab label ="Daily"/>
                   <Tab label ="Weekly" />
@@ -374,7 +379,7 @@ const monthlyPrice = [];
              
            </div>
 
-           <Footer />
+         
             
         </div>
     )

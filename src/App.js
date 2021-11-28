@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route } from 'react-router-dom';
 import Coins from './components/Coins';
 import Header from './components/Header';
 import Coin from './components/Coin';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
     coin.name.toLowerCase().includes(search.toLowerCase())
     );
       console.log(coins)
+
+ 
+
   return (
     <div className="container mx-auto">
       <Router>
@@ -38,6 +42,7 @@ function App() {
                 <input type="text" placeholder="search" className="md:w-1/4 sm:w-1/2 sm:pt-2 sm:pb-2 bg-blue-50"  onChange={handleChange} />
               </form>
 
+              
               <Header />
 
             </div>
@@ -62,6 +67,7 @@ function App() {
            <Route path="/coins/:id" children={<Coin />}>
 
            </Route>
+           <Footer />
          
        </Router>
 
