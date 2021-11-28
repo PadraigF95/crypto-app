@@ -5,6 +5,7 @@ import { Tabs, Tab } from '@material-ui/core'
 import { Line } from 'react-chartjs-2';
 import RedditIcon from '@material-ui/icons/Reddit';
 import TwitterIcon from '@material-ui/icons/Twitter';
+import Footer from './Footer';
 
 const Coin = () => {
 
@@ -244,7 +245,7 @@ const monthlyPrice = [];
 
 
     return (
-        <div className="container mx-auto pt-8 bg-background">
+        <div className="container mx-auto pt-8 ">
             <Link to="/" className="pl-4">
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded md:px-8 md:sticky left-16">Home</button>
             </Link>
@@ -255,7 +256,7 @@ const monthlyPrice = [];
 
         <div className="sm:flex flex-col-reverse">
             <div className=" lg:absolute top-32 left-2/3 sm:pt-12 sm:ml-4 sm:mr-4">
-                <div className="sm:text-center bg-blue-900 md:rounded-lg border-solid border-4 border-black md:p-6 sm:pb-4 sm:pt-4">
+                <div className="sm:text-center  md:rounded-lg border-solid border-4 border-black md:p-6 sm:pb-4 sm:pt-4">
                     <p className="text-center text-2xl font-black md:pb-4 sm:pb-2 underline">Socials</p>
                 <p className="font-medium md:text-center">Twitter Followers: {community_data.twitter_followers.toLocaleString()}</p>
                 <p className="lg:pb-2 font-medium md:text-center">Reddit Subscribers: {community_data.reddit_subscribers.toLocaleString()}</p>
@@ -271,7 +272,7 @@ const monthlyPrice = [];
            
             </div>
 
-            <div className="lg:absolute top-32 left-1/3 lg:pl-28 bg-blue-900 md:rounded-lg border-solid border-4 border-black md:p-3 sm:pb-4 sm:pt-4 sm:ml-4 sm:mr-4">
+            <div className="lg:absolute top-32 left-1/3 lg:pl-28  md:rounded-lg border-solid border-4 border-black md:p-3 sm:pb-4 sm:pt-4 sm:ml-4 sm:mr-4">
                 <p className="text-2xl font-black lg:pb-4 sm:text-center underline sm:pb-2">{name} Info</p>
                 <div className="sm:text-center md:pr-20 font-medium ">
                 {name} in circulation: {market_data.circulating_supply.toLocaleString()}
@@ -293,9 +294,9 @@ const monthlyPrice = [];
            </div>
           
            </div>
-           <div className="lg:sticky bottom-64 h-auto mt-8">
+           <div className="">
                <p className="text-center lg:text-2xl lg:font-black lg:pb-4">About</p>
-               <div className ="text-xs md:pl-16 sm:pl-4 sm:pr-4"dangerouslySetInnerHTML={{__html: readMore ? description.en: DOMPurify.sanitize(description.en.substring(0,400))}}></div>
+               <div className ="text-xs font-medium md:pl-16 sm:pl-4 sm:pr-4"dangerouslySetInnerHTML={{__html: readMore ? description.en: DOMPurify.sanitize(description.en.substring(0,400))}}></div>
 
                <button className="underline text-blue-600 md:pl-16 sm:pl-4" onClick={() => setReadMore(!readMore)}>
                     {readMore ? 'show less' : ' read more'}
@@ -372,6 +373,8 @@ const monthlyPrice = [];
              </div> }
              
            </div>
+
+           <Footer />
             
         </div>
     )

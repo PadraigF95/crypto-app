@@ -4,10 +4,7 @@ module.exports = {
   theme: {
     extend: {
       screens: { 'sm': { 'max' : '640px'} },
-      backgroundImage: {
-        'background': "url('/img/large-screen-background.jpg')",
-        'mobile-background': "url('/img/mobile-background.jpg')",
-      }
+  
     },
   },
   variants: {
