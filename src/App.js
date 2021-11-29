@@ -8,10 +8,12 @@ import Footer from './components/Footer';
 
 
 
+
 function App() {
 
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState('');
+ 
 
   useEffect(() => {
     axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false')
@@ -25,6 +27,9 @@ function App() {
     setSearch(e.target.value)
   };
 
+
+
+
   const filteredCoins = coins.filter(coin =>
     coin.name.toLowerCase().includes(search.toLowerCase())
     );
@@ -33,14 +38,15 @@ function App() {
  
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto sm:bg-gradient-to-r from-green-400  to-blue-500 sm:pr-6 sm:pl-6 ">
       <Router>
         
         <Route exact path="/" >
             <div >
               <h1 className="text-center pt-6"> Search for a currency</h1>
               <form className="flex flex-col justify-center items-center">
-                <input type="text" placeholder="search" className="md:w-1/4 sm:w-1/2 sm:pt-2 sm:pb-2 bg-blue-50"  onChange={handleChange} />
+                <input type="text" placeholder="search" className="md:w-1/4 sm:w-1/2 sm:pt-2 sm:pb-2 bg-blue-50"  onChange={handleChange}  />
+                
               </form>
 
               

@@ -7,6 +7,7 @@ import RedditIcon from '@material-ui/icons/Reddit';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import Footer from './Footer';
 import { CircularProgress } from '@material-ui/core';
+import Error_Page from './Error_Page';
 
 const Coin = () => {
 
@@ -90,7 +91,7 @@ const Coin = () => {
 
         )
         .catch((err) => {
-            console.log(err)
+            <Error_Page />
         })
         .finally(() => {
             setLoading(false)
@@ -98,7 +99,7 @@ const Coin = () => {
     }, []);
 
     if(loading){
-        return <div className="absolute top 50%">
+        return <div className="absolute top-1/2 left-1/2">
             
             <CircularProgress  />
             </div>
@@ -158,64 +159,75 @@ console.log(hourlyPrice, "fgrhtr")
 const monthlyTime=[];
 const monthlyPrice = [];
 
-
+if(coin === undefined) {
+    return(
+        <div className="top-1/2 left-1/2">
+            <CircularProgress />
+        </div>
+    )
+}
     if(market_data.ath === undefined){
         return(
-            <div className="absolute top 50%">
+            <div className="absolute top-1/2 left-1/2">
                 <CircularProgress />
             </div>
         )
     }else if(links.homepage === undefined){
         return(
-            <div className="absolute top 50%">
+            <div className="absolute top-1/2 left-1/2">
                 <CircularProgress />
             </div>
         )
     }else if(market_data.circulating_supply === undefined){
             return(
-                <div className="absolute top 50%">
+                <div className="absolute top-1/2 left-1/2">
                    <CircularProgress />
                 </div>
             )
     }else if(market_data.atl === undefined){
         return(
-            <div className="absolute top 50%">
+            <div className="absolute top-1/2 left-1/2">
                 <CircularProgress />
             </div>
         )
     }else if(market_data.current_price === undefined){
         return(
-            <div className="absolute top 50%">
+            <div className="absolute top-1/2 left-1/2">
                 <CircularProgress />
             </div>
         )
     } else if(market_data.market_cap === undefined){
         return(
-            <div className="absolute top 50%">
+            <div className="absolute top-1/2 left-1/2">
                <CircularProgress />
             </div>
         )
   
     }else if(newPrices === undefined){
         return(
-            <div className="absolute top 50%">
+            <div className="absolute top-1/2 left-1/2">
                 <CircularProgress />
             </div>
         )
     }else if(daily.prices === undefined) {
-        <div className="absolute top 50%">
+        return(
+        <div className="absolute top-1/2 left-1/2">
             <CircularProgress />
         </div>
+        )
     }else if(monthly.prices === undefined) {
-            <div className="absolute top 50%">
+        return(
+
+            <div className="absolute top-1/2 left-1/2">
                <CircularProgress />
             </div>
+        )
     }
     
 
     if(loading){
         return(
-            <div className="absolute top 50%">
+            <div className="absolute top-1/2 left-1/2">
 
                 <CircularProgress />
             </div>
@@ -250,7 +262,7 @@ const monthlyPrice = [];
 
 
     return (
-        <div className="container mx-auto pt-8 h-full">
+        <div className="container mx-auto pt-8 h-full bg-white">
             <Link to="/" className="pl-4">
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded md:px-8 md:sticky left-16">Home</button>
             </Link>
