@@ -7,6 +7,7 @@ import Coin from './components/Coin';
 import Footer from './components/Footer';
 
 
+
 function App() {
 
   const [coins, setCoins] = useState([]);
