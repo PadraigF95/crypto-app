@@ -32,7 +32,7 @@ function App() {
   };
 
 
-
+const emptyText = "";
 
   const filteredCoins = coins.filter(coin =>
     coin.name.toLowerCase().includes(search.toLowerCase())
@@ -159,7 +159,9 @@ function App() {
               <h1 className="text-center pt-6"> Search for a currency</h1>
               <form className="flex flex-col justify-center items-center">
                 <input type="text" placeholder="search" className="md:w-1/4 sm:w-1/2 sm:pt-2 sm:pb-2 bg-blue-50"  onChange={handleChange}  />
-               
+                
+                
+                  <button className=' border-2 mt-2 border-black sm:bg-black sm:text-white p-1' onClick={emptyText}>clear text</button>
               </form>
 
               
