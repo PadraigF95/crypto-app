@@ -262,7 +262,7 @@ if(coin === undefined) {
 
 
     return (
-        <div className="container mx-auto pt-8 h-full bg-white">
+        <div className="container mx-auto pt-12 h-full bg-white ">
             <Link to="/" className="pl-4">
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded md:px-8 md:sticky left-16">Home</button>
             </Link>

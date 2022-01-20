@@ -47,7 +47,7 @@ function App() {
  
 
   return (
-    <div className="container mx-auto sm:bg-gradient-to-r from-green-400  to-blue-500 sm:pr-6 sm:pl-6 ">
+    <div className="container mx-auto sm:bg-gradient-to-r from-green-400  to-blue-500 sm:pr-6 sm:pl-6 sm:pt-12  ">
       <Router>
         
         <Route exact path="/" >
