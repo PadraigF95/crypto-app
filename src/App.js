@@ -32,7 +32,7 @@ function App() {
   };
 
 
-const emptyText = "";
+
 
   const filteredCoins = coins.filter(coin =>
     coin.name.toLowerCase().includes(search.toLowerCase())
@@ -40,114 +40,10 @@ const emptyText = "";
      
     
 
-    const cryptoCurrencies = [
-      { label :"Bitcoin", id:1},
-      { label :"Ethereum", id:2 },
-      { label :" Binance Coin", id:3 },
-      { label : "Tether", id:4},
-      { label : "Solana", id:5 },
-      { label : "Cardano", id:6},
-      { label : "XRP", id:7 },
-      { label : "USD Coin", id:8},
-      { label : "Polkadot", id:9},
-      { label : "Dogecoin", id:10 },
-      {label : "Avalanche"},
-{label : "Terra"},
-{label : "Shiba Inu"},
-{label : "Crypto.com Coin"},
-{label : "Wrapped Bitcoin"},
-{label : "Polygon"},
-{label : "Litecoin"},
-{label : "Binance USD"},
-{label :"Algorand"},
-{label :"Chainlink"},
-{label :"Bitcoin Cash"},
-{label : "Uniswap"},
-{label :"Dai"},
-{label :"Axie Infinity"},
-{label :" Stellar"},
-{label :"VeChain"},
-{label :"TerraUSD"},
-{label :"Cosmos"},
-{label :"Elrond"},
-{label :" Internet Computer"},
-{label : "cETH"},
-{label :"OKB"},
-{label :"Filecoin"},
-{label :"TRON"},
-{label :"FTX Token"},
-{label :"Lido Staked Ether"},
-{label :"Theta Network"},
-{label :"Hedera"},
-{label :"Ethereum Classic"},
-{label :"Decentraland"},
-{label :"The Sandbox"},
-{label :"Fantom"},
-{label :"cDAI"},
-{label :"Near"},
-{label :"Gala",},
-{label :"Tezos",},
-{label :"The Graph",},
-{label :"Monero",},
-{label :"Olympus",},
-{label :"Klaytn",},
-{label :"Helium",},
-{label :"EOS",},
-{label :"Radix",},
-{label :"IOTA",},
-{label :"cUSDC",},
-{label :"Flow",},
-{label :"Magic Internet Money"},
-{label :"Kusama",},
-{label :"LEO Token",},
-{label :"Aave",},
-{label :"Loopring",},
-{label :"PancakeSwap",},
-{label :"THORChain",},
-{label :"Enjin Coin",},
-{label :"eCash",},
-{label :"Stacks",},
-{label :"Arweave",},
-{label :"Amp",},
-{label :"Kadena",},
-{label :"Harmony",},
-{label :"Bitcoin SV",},
-{label :"Maker",},
-{label :"Quant",},
-{label :"Zcash",},
-{label :"NEO",},
-{label :"Chiliz",},
-{label :"Huobi BTC",},
-{label :"Waves",},
-{label :"Basic Attention Token"},
-{label :"Holo",},
-{label :"BitTorrent",},
-{label : "KuCoin Token",},
-{label : "Bitcoin Cash ABC",},
-{label :"Theta Fuel",},
-{label :"Curve DAO Token",},
-{label :"Dash",},
-{label :"Celo",},
-{label :"Wonderland",},
-{label :"Celsius Network",},
-{label :"LINK",},
-{label :"Compound",},
-{label :"e-Radix",},
-{label :"Qtum",},
-{label :"NEM",},
-{label :"NEXO",},
-{label :"Marinade staked SOL"},
-{label :"Huobi Token"},
-{label :"ECOMI",},
-{label :"Sushi",}
+    
 
-    ]
 
-    const singleCrypto = []
-
-    for(let i =0; i < cryptoCurrencies.length; i += 1) {
-      singleCrypto.push(cryptoCurrencies[i].label)
-    }
+    
  
 
   return (
@@ -158,10 +54,8 @@ const emptyText = "";
             <div >
               <h1 className="text-center pt-6"> Search for a currency</h1>
               <form className="flex flex-col justify-center items-center">
-                <input type="text" placeholder="search" className="md:w-1/4 sm:w-1/2 sm:pt-2 sm:pb-2 bg-blue-50"  onChange={handleChange}  />
+                <input type="search" placeholder="search" className="md:w-1/4 sm:w-1/2 sm:pt-2 sm:pb-2 bg-blue-50"  onChange={handleChange}  />
                 
-                
-                  <button className=' border-2 mt-2 border-black sm:bg-black sm:text-white p-1' onClick={emptyText}>clear text</button>
               </form>
 
               

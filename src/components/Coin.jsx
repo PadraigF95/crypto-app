@@ -7,7 +7,7 @@ import RedditIcon from '@material-ui/icons/Reddit';
 import TwitterIcon from '@material-ui/icons/Twitter';
 
 import { CircularProgress } from '@material-ui/core';
-import Error_Page from './errorPage';
+import errorPage from './errorPage';
 
 const Coin = () => {
 
@@ -91,7 +91,7 @@ const Coin = () => {
 
         )
         .catch((err) => {
-            <Error_Page />
+            <errorPage />
         })
         .finally(() => {
             setLoading(false)
