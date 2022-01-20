@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {BrowserRouter as Router, Route } from 'react-router-dom';
 import Coins from './components/Coins';
-import Header from './components/Header';
+
 import Coin from './components/Coin';
 import Footer from './components/Footer';
-import cryptoCurrencies from './components/cryptoCurrencies';
+
 
 
 

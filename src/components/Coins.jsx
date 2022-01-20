@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import StarBorderIcon from '@material-ui/icons/StarBorder'
+
 
 
 export const Coins = ({ id,name, image, symbol, price, volume, priceChange, marketCap, rank}) => {
