@@ -5,9 +5,9 @@ import { Tabs, Tab } from '@material-ui/core'
 import { Line } from 'react-chartjs-2';
 import RedditIcon from '@material-ui/icons/Reddit';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import Footer from './Footer';
+
 import { CircularProgress } from '@material-ui/core';
-import Error_Page from './Error_Page';
+import Error_Page from './errorPage';
 
 const Coin = () => {
 
@@ -252,7 +252,7 @@ if(coin === undefined) {
     
    const ath = market_data.ath.eur;
 
-   const newLink = links.homepage[0];
+//    const newLink = links.homepage[0];
 
    const atl = market_data.atl.eur;
 
