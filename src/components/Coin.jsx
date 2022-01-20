@@ -7,14 +7,14 @@ import RedditIcon from '@material-ui/icons/Reddit';
 import TwitterIcon from '@material-ui/icons/Twitter';
 
 import { CircularProgress } from '@material-ui/core';
-import errorPage from './errorPage';
+
 
 const Coin = () => {
 
     const [coin, setCoin] = useState([]);
     const {id} = useParams();
     const [readMore , setReadMore] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [market, setMarket] = useState([]);
     const [daily, setDaily] = useState([]);
     const [monthly, setMonthly] = useState([]);
@@ -82,7 +82,6 @@ const Coin = () => {
    
 
     useEffect(() => {
-        setLoading(true)
         fetchCoin()
         fetchMarket()
         fetchDaily()
@@ -112,6 +111,7 @@ const Coin = () => {
         description = [],
         market_data =[],  
         links =[],
+        /* put variables in empty objects*/
     } = coin
 
     const formatData = (prices) => {
@@ -209,20 +209,7 @@ if(coin === undefined) {
                 <CircularProgress />
             </div>
         )
-    }else if(daily.prices === undefined) {
-        return(
-        <div className="absolute top-1/2 left-1/2">
-            <CircularProgress />
-        </div>
-        )
-    }else if(monthly.prices === undefined) {
-        return(
-
-            <div className="absolute top-1/2 left-1/2">
-               <CircularProgress />
-            </div>
-        )
-    }
+    }else 
     
 
     if(loading){
@@ -268,28 +255,11 @@ if(coin === undefined) {
             </Link>
             <div className="pt-6 ">
                 <p className="sm:uppercase sm:text-xl lg:hidden sm:text-center md:uppercase md: text-xl md: text-center" >{name}</p>
-                <img src={image.large} alt="crypto" className="md:mr-auto md:ml-auto md:block sm:block sm:ml-auto sm:mr-auto sm:w-2/4 sm:pb-12 lg:relative right-1/3"/>
+                <img src={image.large} alt="crypto" className="md:mr-auto md:ml-auto md:block sm:block sm:ml-auto sm:mr-auto sm:w-2/4 sm:pb-12 md:pb-4"/>
             </div>
 
-        <div className="sm:flex flex-col-reverse md:mb-4">
-            <div className=" lg:absolute top-32 left-2/3 sm:pt-12 sm:ml-4 sm:mr-4 ">
-                <div className="sm:text-center  md:rounded-lg border-solid border-4 border-black md:p-6 sm:pb-4 sm:pt-4 md:mb-8 md:ml-4 md:mr-4 lg:ml-12">
-                    <p className="text-center text-2xl font-black md:pb-1 sm:pb-2 underline lg:relative -top-2">Socials</p>
-                <p className="font-medium md:text-center">Twitter Followers: {community_data.twitter_followers.toLocaleString()}</p>
-                <p className="lg:pb-2 font-medium md:text-center md:mb-2">Reddit Subscribers: {community_data.reddit_subscribers.toLocaleString()}</p>
-                <button className="bg-white hover:bg-red-700  font-bold px-4 border border-black rounded  text-orange hover:text-white md:relative md:left-1/3 lg:px-2 lg:relative lg:left-4 lg:mb-4"><RedditIcon className="pb-1"/><a href = {`${links.subreddit_url}`} target="_blank" rel="noreferrer" className=" hover:text-white">Reddit</a></button>
-                <button className="bg-white hover:bg-red-700 hover:text-white text-blue-600 font-bold px-4 border border-black rounded  md:relative left-1/3 md:ml-4 lg:px-2 lg:left-4 xl:mr-6"><TwitterIcon className="pb-1"/><a href = {`https://twitter.com/${links.twitter_screen_name}`} target="_blank" rel="noreferrer" className="  hover:text-white">Twitter</a></button>
-                </div>
-                <div className="sm:text-center">
-             
-             
-           </div>
-
-              
-           
-            </div>
-
-            <div className="lg:absolute lg:top-32 lg:left-1/3 md:rounded-lg border-solid border-4 border-black md:p-3 sm:pb-4 sm:pt-4 sm:ml-4 sm:mr-4 md:ml-4 md:mr-4 lg:pr-10 lg:pl-10 2xl:absolute 2xl:top-32">
+            <div className='grid grid-cols-2 gap-2 sm:grid sm:grid-cols-1 sm:ml-2 sm:mr-2'>
+            <div className=" border-solid border-4 border-black pt-4 pb-4">
                 <p className="text-2xl font-black lg:pb-4 sm:text-center underline sm:pb-2 md: text-center md:pb-1 ">{name} Info</p>
                 <div className="sm:text-center font-medium md:text-center ">
                 {name} in circulation: {market_data.circulating_supply.toLocaleString()}
@@ -305,6 +275,54 @@ if(coin === undefined) {
                     <p>Market Cap: €{market_cap.toLocaleString()}</p>
                 </div>
             </div>
+
+        <div className="border-solid border-4 border-black">
+            <div className=" sm:text-center pb-4 ">
+                <div className=" pt-4">
+                    <p className="text-center text-2xl font-black md:pb-1 sm:pb-2 underline lg:relative -top-2">Socials</p>
+                <p className="font-medium md:text-center">Twitter Followers: {community_data.twitter_followers.toLocaleString()}</p>
+                <p className="lg:pb-2 font-medium md:text-center md:mb-2">Reddit Subscribers: {community_data.reddit_subscribers.toLocaleString()}</p>
+                <div className='flex justify-center gap-4'>
+                <button className="bg-white hover:bg-red-700  font-bold px-4 border border-black rounded  text-orange hover:text-white  "><RedditIcon className="pb-1"/><a href = {`${links.subreddit_url}`} target="_blank" rel="noreferrer" className=" hover:text-white">Reddit</a></button>
+                <button className="bg-white hover:bg-red-700 hover:text-white text-blue-600 font-bold px-4 border border-black rounded "><TwitterIcon className="pb-1"/><a href = {`https://twitter.com/${links.twitter_screen_name}`} target="_blank" rel="noreferrer" className="  hover:text-white">Twitter</a></button>
+                </div>
+                
+                </div>
+
+            </div>
+           
+                <div className="sm:text-center">
+             
+             
+           </div>
+
+              
+           
+            </div>
+
+            
+
+            {/* <div className='grid grid-cols-2 place-items-end'>
+                <div>   
+                    <p>{name} Info</p>
+                    <div>
+                        {name} in circulation: {market_data.circulating_supply.toLocaleString()}
+                    </div>
+                    <div>
+                        <p> All Time High: €{ath.toLocaleString()}</p>
+                        <p> All Time Low: €{atl.toLocaleString()}</p>
+                    </div>
+                    <div>
+                    <p>Current Price: €{current_price.toLocaleString()}</p>
+                    <p>Market Cap: €{market_cap.toLocaleString()}</p>
+                    </div>
+                </div>
+                <div>
+                        <p>Socials</p>
+                        <p>Twitter Followers: {community_data.twitter_followers.toLocaleString()}</p>
+                        <p>Reddit Subscribers: {community_data.reddit_subscribers.toLocaleString()}</p>
+                </div>
+            </div> */}
            
            
            <div>
@@ -398,3 +416,4 @@ if(coin === undefined) {
 }
 
 export default Coin
+
