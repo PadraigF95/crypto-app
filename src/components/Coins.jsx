@@ -13,7 +13,7 @@ console.log(name)
 
 
             
-            <div className="2xl:ml-96 2xl:mr-96 md:ml-20 md:mr-20 lg:ml-36 lg:mr-36 xl:ml-80 xl:mr-80  ">
+            <div className="2xl:ml-96 2xl:mr-96 md:ml-20 md:mr-20 lg:ml-36 lg:mr-36 xl:ml-80 xl:mr-80 md:flex md:justify-start ">
                 <div className=" sm:flex sm:flex-col sm:items-center justify-center md:flex md:flex-row sm:border-b-2 sm:border-solid sm:border-4 sm:border-black xl:pb-10 md:items-center sm:pt-4 ">
                     
                     {/* <p className="sm:pr-48 sm:relative sm:top-8 sm:text-xl md:relative md:right-6 xl:relative xl:right-64 ">{rank}</p> */}
