@@ -2,26 +2,23 @@ import React from 'react'
 
 const Header = () => {
     return (
-        <div className="sm:hidden">
-            <thread>
-                <tr className="flex justify-center w-full">
-                    <th className=" xl:ml-12">
-                        Coin
-                    </th>
-                    <th className="">
-                        Price
-                    </th>
-                    <th className="">
-                        Volume
-                    </th>
-                    <th className="">
-                        Daily Change
-                    </th>
-                    <th className="">
-                        Market Cap
-                    </th>
-                </tr>
-            </thread>
+        <div className="sm:hidden md:flex md:flex-row md:justify-center mt-6" >
+            <div className='md:relative xl:right-44 lg:right-5 md:right-16  underline'>
+                <span>Coin</span>
+            </div>
+            <div className='md:relative xl:right-11 lg:right-0 underline'>
+                <span>Price per Coin</span>
+            </div>
+               
+            <div className='md:relative xl:left-8 lg:left-14 md:left-4 underline'>
+                <span>Volume</span>
+            </div>
+            <div className='md:relative xl:left-28 lg:left-28 md:left-14 underline'>
+                <span>Price Change</span>
+            </div>
+            <div className='md:relative xl:left-44 lg:left-36 md:left-24  underline'>
+                <span>Market Cap</span>
+            </div>
         </div>
     )
 }

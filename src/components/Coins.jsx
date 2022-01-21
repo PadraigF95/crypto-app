@@ -13,13 +13,13 @@ console.log(name)
 
 
             
-            <div className="2xl:ml-96 2xl:mr-96 md:ml-20 md:mr-20 lg:ml-36 lg:mr-36 xl:ml-80 xl:mr-80 md:flex md:justify-start ">
-                <div className=" sm:flex sm:flex-col sm:items-center justify-center md:flex md:flex-row sm:border-b-2 sm:border-solid sm:border-4 sm:border-black xl:pb-10 md:items-center sm:pt-4 ">
+            <div className="  md:flex md:justify-center 2xl:pl-20 lg:pl-20 md:pr-20">
+                <div className=" sm:flex sm:flex-col sm:items-center  md:flex md:flex-row sm:border-b-2 sm:border-solid sm:border-4 sm:border-black xl:pb-10 md:items-center sm:pt-4 ">
                     
                     {/* <p className="sm:pr-48 sm:relative sm:top-8 sm:text-xl md:relative md:right-6 xl:relative xl:right-64 ">{rank}</p> */}
                     
 
-                    <img src={image} alt={name} className="w-20 h-20 xl:relative xl:right-40 object-cover md:mt-8"  />
+                    <img src={image} alt={name} className="lg:w-20 lg:h-20 xl:relative xl:right-40 object-cover md:mt-8 md:w-10 md:h-10 md:mb-6 lg:mb-0"  />
                     <Link to={`/coins/${id}`} key={name} style={{ textDecoration: 'none'}}>
 
                     <p className="md:w-20 md:pl-6 text-blue-600 underline sm:pb-2 xl:relative xl:right-24 xl:w-40 text-justify xl:pt-6">{name}</p>

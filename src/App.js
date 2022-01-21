@@ -5,6 +5,7 @@ import Coins from './components/Coins';
 
 import Coin from './components/Coin';
 import Footer from './components/Footer';
+import Header from './components/Header';
 
 
 
@@ -63,6 +64,8 @@ function App() {
               
 
             </div>
+
+            
          
             {filteredCoins.map(coin => {
         console.log(coin)
