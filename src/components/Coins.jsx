@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Header from './Header'
 
 
 
@@ -13,10 +14,10 @@ console.log(name)
 
 
             
-            <div className="  md:flex md:justify-center 2xl:pl-20 lg:pl-20 md:pr-20">
+            {/* <div className="  md:flex md:justify-center 2xl:pl-20 lg:pl-20 md:pr-20">
                 <div className=" sm:flex sm:flex-col sm:items-center  md:flex md:flex-row sm:border-b-2 sm:border-solid sm:border-4 sm:border-black xl:pb-10 md:items-center sm:pt-4 ">
                     
-                    {/* <p className="sm:pr-48 sm:relative sm:top-8 sm:text-xl md:relative md:right-6 xl:relative xl:right-64 ">{rank}</p> */}
+                   
                     
 
                     <img src={image} alt={name} className="lg:w-20 lg:h-20 xl:relative xl:right-40 object-cover md:mt-8 md:w-10 md:h-10 md:mb-6 lg:mb-0"  />
@@ -39,7 +40,21 @@ console.log(name)
                 </div>
                
             </div>
-            
+             */}
+
+             <div className='grid grid-cols-6 items-center'>
+                 <img src={image} alt={name} className='w-20 h-20'/>
+                 <span>{name}</span>
+                 <p>€{price.toLocaleString()}</p>
+                 <p>€{volume.toLocaleString()}</p>
+                 {priceChange < 0 ? (
+                        <p className='text-red-500'>{priceChange.toFixed(2)}%</p>
+                    ): (
+                        <p className='text-green-500'>{priceChange.toFixed(2)}%</p>
+                    )
+                    }
+                    <p>{marketCap.toLocaleString()}</p>
+             </div>
             
             
         </div>

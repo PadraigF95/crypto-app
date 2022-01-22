@@ -2,21 +2,24 @@ import React from 'react'
 
 const Header = () => {
     return (
-        <div className="sm:hidden md:flex md:flex-row md:justify-center mt-6" >
-            <div className='md:relative xl:right-44 lg:right-5 md:right-16  underline'>
+        <div className="sm:hidden md:grid md:grid-cols-6  md:justify-items-start w-3/4 m-auto  " >
+            <div>
+                <span>Symbol</span>
+            </div>
+            <div>
                 <span>Coin</span>
             </div>
-            <div className='md:relative xl:right-11 lg:right-0 underline'>
-                <span>Price per Coin</span>
+            <div>
+                <span>Price</span>
             </div>
                
-            <div className='md:relative xl:left-8 lg:left-14 md:left-4 underline'>
+            <div>
                 <span>Volume</span>
             </div>
-            <div className='md:relative xl:left-28 lg:left-28 md:left-14 underline'>
+            <div>
                 <span>Price Change</span>
             </div>
-            <div className='md:relative xl:left-44 lg:left-36 md:left-24  underline'>
+            <div className=''>
                 <span>Market Cap</span>
             </div>
         </div>

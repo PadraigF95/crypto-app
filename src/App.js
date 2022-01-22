@@ -65,7 +65,7 @@ function App() {
 
             </div>
 
-            
+            <Header />
          
             {filteredCoins.map(coin => {
         console.log(coin)
