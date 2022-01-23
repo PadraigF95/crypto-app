@@ -7,6 +7,7 @@ import Coin from './components/Coin';
 import Footer from './components/Footer';
 import Header from './components/Header';
 
+import HomeNav from './components/HomeNav';
 
 
 
@@ -40,7 +41,7 @@ function App() {
     );
      
     
-
+   
     
 
 
@@ -48,12 +49,12 @@ function App() {
  
 
   return (
-    <div className="container mx-auto sm:bg-gradient-to-r from-green-400  to-blue-500 sm:pr-6 sm:pl-6 sm:pt-12  ">
+    <div className="container mx-auto sm:bg-gradient-to-r from-green-400  to-blue-500 sm:pr-6 sm:pl-6 sm:pt-12 dark:bg-gray-800 transition duration-500" id="app">
       <Router>
         
         <Route exact path="/" >
             <div >
-              <h1 className="text-center pt-6"> Search for a currency</h1>
+              <h1 className="text-center pt-6 dark:text-white"> Search for a currency</h1>
               <form className="flex flex-col justify-center items-center">
                 <input type="search" placeholder="search" className="md:w-1/4 sm:w-1/2 sm:pt-2 sm:pb-2 bg-blue-50"  onChange={handleChange}  />
                 
@@ -64,7 +65,7 @@ function App() {
               
 
             </div>
-
+            <HomeNav />
             <Header />
          
             {filteredCoins.map(coin => {

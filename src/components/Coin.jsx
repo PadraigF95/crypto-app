@@ -7,6 +7,7 @@ import RedditIcon from '@material-ui/icons/Reddit';
 import TwitterIcon from '@material-ui/icons/Twitter';
 
 import { CircularProgress } from '@material-ui/core';
+import Nav from './Nav';
 
 
 const Coin = () => {
@@ -249,10 +250,9 @@ if(coin === undefined) {
 
 
     return (
-        <div className="container mx-auto pt-12 h-full bg-white ">
-            <Link to="/" className="pl-4">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded md:px-8 md:sticky left-16">Home</button>
-            </Link>
+        <div className="container mx-auto pt-12 h-full bg-white dark:bg-gray-800 dark:text-white .home-button:hidden">
+            <Nav />
+            
             <div className="pt-6 ">
                 <p className="sm:uppercase sm:text-xl lg:hidden sm:text-center md:uppercase md: text-xl md: text-center" >{name}</p>
                 <img src={image.large} alt="crypto" className="md:mr-auto md:ml-auto md:block sm:block sm:ml-auto sm:mr-auto sm:w-2/4 sm:pb-12 md:pb-4"/>
@@ -329,8 +329,8 @@ if(coin === undefined) {
            </div>
           
            </div>
-           <div className="md:mb-6 bg-gray-100">
-               <p className="text-center lg:text-2xl lg:font-black lg:pb-4 md:font-black md:text-2xl md:pb-1 md:pt-6">About</p>
+           <div className="md:mb-6 bg-gray-100 dark:bg-gray-400 dark:text-black">
+               <p className="text-center lg:text-2xl lg:font-black lg:pb-4 md:font-black md:text-2xl md:pb-1 md:pt-6 underline">About</p>
                <div className ="text-xs font-medium md:ml-12 md:mr-12 sm:pl-4 sm:pr-4 md:text-base"dangerouslySetInnerHTML={{__html: readMore ? description.en: DOMPurify.sanitize(description.en.substring(0,400))}}></div>
 
                <button className="underline text-blue-600 md:pl-12 sm:pl-4 md:pb-8" onClick={() => setReadMore(!readMore)}>
