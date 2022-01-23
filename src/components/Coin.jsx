@@ -8,6 +8,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 
 import { CircularProgress } from '@material-ui/core';
 import Nav from './Nav';
+import MobileNav from './MobileNav';
 
 
 const Coin = () => {
@@ -246,7 +247,7 @@ if(coin === undefined) {
 
     return (
         <div className="container mx-auto pt-12 h-full bg-white dark:bg-gray-800 dark:text-white .home-button:hidden">
-            <Nav />
+            <Nav /><MobileNav />
             
             <div className="pt-6 ">
                 <p className="sm:uppercase sm:text-xl lg:hidden sm:text-center md:uppercase md: text-xl md: text-center" >{name}</p>
