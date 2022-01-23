@@ -54,7 +54,7 @@ console.log(name)
                         <p className='text-green-500'>{priceChange.toFixed(2)}%</p>
                     )
                     }
-                    <span className="lg:hidden"> Market Cap: </span><p>{marketCap.toLocaleString()}</p>
+                    <span className="lg:hidden"> Market Cap: </span><p>€{marketCap.toLocaleString()}</p>
              </div>
                     </Link>
             
