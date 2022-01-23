@@ -23,11 +23,10 @@ function App() {
     axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false')
    .then(res =>{
      setCoins(res.data);
-     console.log(res.data);
    }).catch(error => console.log(error));
   }, []);
 
-  console.log(coins,'blue')
+ 
 
   const handleChange = e => {
     setSearch(e.target.value)
@@ -69,7 +68,7 @@ function App() {
             <Header />
          
             {filteredCoins.map(coin => {
-        console.log(coin)
+      
           return(
             <Coins
             id={coin.id} 

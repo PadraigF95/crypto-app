@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import { Tabs, Tab } from '@material-ui/core'
 import { Line } from 'react-chartjs-2';
@@ -91,7 +91,7 @@ const Coin = () => {
 
         )
         .catch((err) => {
-            <errorPage />
+            
         })
         .finally(() => {
             setLoading(false)
@@ -112,7 +112,6 @@ const Coin = () => {
         description = [],
         market_data =[],  
         links =[],
-        /* put variables in empty objects*/
     } = coin
 
     const formatData = (prices) => {
@@ -154,8 +153,6 @@ const Coin = () => {
        hourlyPrice.push(daily.prices[i][1].toFixed(2));
    }
 
-console.log(hourlyTime, "gtdthystdrgjy")
-console.log(hourlyPrice, "fgrhtr")
   
 const monthlyTime=[];
 const monthlyPrice = [];
@@ -229,8 +226,6 @@ if(coin === undefined) {
         hourlyTime.push(new Date(newDaily[i][0]).toLocaleTimeString());
         hourlyPrice.push(newDaily[i][1])
     }
-   
-    console.log(hourlyPrice,hourlyTime,"weeklyTime")
 
     for(let i=0; i< thirtydays.length; i += 1 ){
         monthlyTime.push(new Date(thirtydays[i][0]).toLocaleString().slice(0, 10));
@@ -300,31 +295,6 @@ if(coin === undefined) {
            
             </div>
 
-            
-
-            {/* <div className='grid grid-cols-2 place-items-end'>
-                <div>   
-                    <p>{name} Info</p>
-                    <div>
-                        {name} in circulation: {market_data.circulating_supply.toLocaleString()}
-                    </div>
-                    <div>
-                        <p> All Time High: €{ath.toLocaleString()}</p>
-                        <p> All Time Low: €{atl.toLocaleString()}</p>
-                    </div>
-                    <div>
-                    <p>Current Price: €{current_price.toLocaleString()}</p>
-                    <p>Market Cap: €{market_cap.toLocaleString()}</p>
-                    </div>
-                </div>
-                <div>
-                        <p>Socials</p>
-                        <p>Twitter Followers: {community_data.twitter_followers.toLocaleString()}</p>
-                        <p>Reddit Subscribers: {community_data.reddit_subscribers.toLocaleString()}</p>
-                </div>
-            </div> */}
-           
-           
            <div>
            </div>
           

@@ -8,7 +8,7 @@ export default function HomeNav() {
 
     const [colorTheme, setTheme] = useDarkMode()
   return (
-      <div className="grid grid-cols-1 w-full">
+      <div className="grid grid-cols-1 w-full sm:hidden">
           <span onClick={() => setTheme(colorTheme)} className="w-10 h-10 bg-indigo-500 rounded-full shadow-lg cursor-pointer text-white flex items-center justify-center relative left-full">
               {colorTheme === "light"?
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
