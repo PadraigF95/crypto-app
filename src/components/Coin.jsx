@@ -16,7 +16,7 @@ const Coin = () => {
     const [coin, setCoin] = useState([]);
     const {id} = useParams();
     const [readMore , setReadMore] = useState(false);
-    const [loading, setLoading] = useState(true);
+   
     const [market, setMarket] = useState([]);
     const [daily, setDaily] = useState([]);
     const [monthly, setMonthly] = useState([]);
@@ -59,7 +59,7 @@ const Coin = () => {
         try{
             const res2 = await fetch(url3);
             const daily = await res2.json();
-
+                console.log(daily)
             setDaily(daily)
 
         }catch(error){
@@ -71,7 +71,7 @@ const Coin = () => {
         try{
             const res3 = await fetch(url4);
             const monthly = await res3.json()
-
+            console.log(monthly,'monthly')
             setMonthly(monthly)
         }catch(error){
 
@@ -81,30 +81,17 @@ const Coin = () => {
     const handleChange = (event, newValue) => {
         setSelectedTab(newValue)
     };
-   
+    
+    
 
     useEffect(() => {
         fetchCoin()
         fetchMarket()
         fetchDaily()
         fetchMonthly()
-        .then(
-
-        )
-        .catch((err) => {
-            
-        })
-        .finally(() => {
-            setLoading(false)
-        })
     }, []);
 
-    if(loading){
-        return <div className="absolute top-1/2 left-1/2">
-            
-            <CircularProgress  />
-            </div>
-    }
+    
 
     const {
         name,
@@ -123,16 +110,17 @@ const Coin = () => {
             }
         })
     }
+
     const {
         prices =[],
-    } = market;
+    } = market
+
+  const { 
+    
+  } = daily
 
     const {
-        
-    } = daily
-
-    const {
-
+       
     } = monthly
 
 
@@ -208,29 +196,33 @@ if(coin === undefined) {
                 <CircularProgress />
             </div>
         )
-    }else 
-    
-
-    if(loading){
+    }else if(daily.prices === undefined){
         return(
             <div className="absolute top-1/2 left-1/2">
-
                 <CircularProgress />
             </div>
         )
+    } else if(monthly.prices === undefined){
+        return(
+            <div className="absolute top-1/2 left-1/2">
+                <CircularProgress />
+            </div>
+        )
+    } 
+    
+
+  
+    // let newDaily = daily.prices;
+    // let thirtydays = monthly.prices
+
+    for(let i=0; i<daily.prices.length; i += 1) {
+        hourlyTime.push(new Date(daily.prices[i][0]).toLocaleTimeString());
+        hourlyPrice.push(daily.prices[i][1])
     }
 
-    const newDaily = daily.prices;
-    const thirtydays = monthly.prices
-
-    for(let i=0; i<newDaily.length; i += 1) {
-        hourlyTime.push(new Date(newDaily[i][0]).toLocaleTimeString());
-        hourlyPrice.push(newDaily[i][1])
-    }
-
-    for(let i=0; i< thirtydays.length; i += 1 ){
-        monthlyTime.push(new Date(thirtydays[i][0]).toLocaleString().slice(0, 10));
-        monthlyPrice.push(thirtydays[i][1])
+    for(let i=0; i< monthly.prices.length; i += 1 ){
+        monthlyTime.push(new Date(monthly.prices[i][0]).toLocaleString().slice(0, 10));
+        monthlyPrice.push(monthly.prices[i][1])
     }
 
     
@@ -243,10 +235,11 @@ if(coin === undefined) {
    const current_price = market_data.current_price.eur;
     
    const market_cap = market_data.market_cap.eur;
+   
 
 
     return (
-        <div className="container mx-auto pt-12 h-full bg-white dark:bg-gray-800 dark:text-white .home-button:hidden">
+        <div className="container mx-auto pt-12 h-full bg-white dark:bg-gray-800 dark:text-white">
             <Nav /><MobileNav />
             
             <div className="pt-6 ">
@@ -254,7 +247,7 @@ if(coin === undefined) {
                 <img src={image.large} alt="crypto" className="md:mr-auto md:ml-auto md:block sm:block sm:ml-auto sm:mr-auto sm:w-2/4 sm:pb-12 md:pb-4"/>
             </div>
 
-            <div className='grid grid-cols-2 gap-2 sm:grid sm:grid-cols-1 sm:ml-2 sm:mr-2'>
+            <div className='grid grid-cols-2 gap-2 sm:grid sm:grid-cols-1 sm:ml-2 sm:mr-2 md:ml-2 md:mr-2'>
             <div className=" border-solid border-4 border-black pt-4 pb-4">
                 <p className="text-2xl font-black lg:pb-4 sm:text-center underline sm:pb-2 md: text-center md:pb-1 ">{name} Info</p>
                 <div className="sm:text-center font-medium md:text-center ">
@@ -279,18 +272,17 @@ if(coin === undefined) {
                 <p className="font-medium md:text-center">Twitter Followers: {community_data.twitter_followers.toLocaleString()}</p>
                 <p className="lg:pb-2 font-medium md:text-center md:mb-2">Reddit Subscribers: {community_data.reddit_subscribers.toLocaleString()}</p>
                 <div className='flex justify-center gap-4'>
-                <button className="bg-white hover:bg-red-700  font-bold px-4 border border-black rounded  text-orange hover:text-white  "><RedditIcon className="pb-1"/><a href = {`${links.subreddit_url}`} target="_blank" rel="noreferrer" className=" hover:text-white">Reddit</a></button>
-                <button className="bg-white hover:bg-red-700 hover:text-white text-blue-600 font-bold px-4 border border-black rounded "><TwitterIcon className="pb-1"/><a href = {`https://twitter.com/${links.twitter_screen_name}`} target="_blank" rel="noreferrer" className="  hover:text-white">Twitter</a></button>
+                    {(community_data.reddit_subscribers === 0) ? <div className='hidden'></div> : <button className="bg-white hover:bg-red-700  font-bold px-4 border border-black rounded  text-orange hover:text-white  "><RedditIcon className="pb-1"/><a href = {`${links.subreddit_url}`} target="_blank" rel="noreferrer" className=" hover:text-white">Reddit</a></button>}
+            
+                    {(community_data.twitter_followers === 0) ? <div className='hidden'></div> : <button className="bg-white hover:bg-red-700 hover:text-white text-blue-600 font-bold px-4 border border-black rounded "><TwitterIcon className="pb-1"/><a href = {`https://twitter.com/${links.twitter_screen_name}`} target="_blank" rel="noreferrer" className="  hover:text-white">Twitter</a></button>}
+                
                 </div>
                 
                 </div>
 
             </div>
            
-                <div className="sm:text-center">
-             
-             
-           </div>
+                
 
               
            
@@ -300,14 +292,21 @@ if(coin === undefined) {
            </div>
           
            </div>
-           <div className="md:mb-6 bg-gray-100 dark:bg-gray-400 dark:text-black">
-               <p className="text-center lg:text-2xl lg:font-black lg:pb-4 md:font-black md:text-2xl md:pb-1 md:pt-6 underline">About</p>
-               <div className ="text-xs font-medium md:ml-12 md:mr-12 sm:pl-4 sm:pr-4 md:text-base"dangerouslySetInnerHTML={{__html: readMore ? description.en: DOMPurify.sanitize(description.en.substring(0,400))}}></div>
+            
 
-               <button className="underline text-blue-600 md:pl-12 sm:pl-4 md:pb-8" onClick={() => setReadMore(!readMore)}>
+           <div className="md:mb-6 bg-gray-100 dark:bg-gray-600 dark:text-white md:mr-2 md:ml-2">
+               {(description.en.length === 0) ? <div className='hidden'> Empty Text</div> : <div><p className="text-center lg:text-2xl lg:font-black lg:pb-4 md:font-black md:text-2xl md:pb-1 md:pt-6 underline">About</p>
+               <div className ="text-xs font-medium md:ml-12 md:mr-12 sm:pl-4 sm:pr-4 md:text-base"dangerouslySetInnerHTML={{__html: readMore ? description.en: DOMPurify.sanitize(description.en.substring(0,400))}}></div>
+               {(description.en.length <= 400) ? <button className='hidden'></button> : <button className="underline text-blue-600 md:pl-12 sm:pl-4 md:pb-8" onClick={() => setReadMore(!readMore)}>
                     {readMore ? 'show less' : ' read more'}
-                </button>
+                </button>}
+               </div>
+               }
+               
            </div>
+           
+
+           
 
            <div className="md:ml-8 md:mr-8">
            <Tabs value={selectedTab} onChange={handleChange} centered >

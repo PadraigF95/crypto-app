@@ -10,7 +10,6 @@ export const Coins = ({ id,name, image, price, volume, priceChange, marketCap}) 
 
     return (
         <div className="container mx-auto mt-2 bg-white md:w-3/4 sm:mb-4 border-b-2 border-black dark:bg-gray-800 dark:text-white dark:border-white">
-
              <Link to={`/coins/${id}`} key={name} style={{ textDecoration: 'none'}}>
              <div className='lg:grid lg:grid-cols-6 lg:items-center sm:flex sm:flex-col sm:items-center sm:border-b-2 sm:border-solid sm:border-4 sm:border-black sm:py-4 '>
                  <img src={image} alt={name} className='w-20 h-20'/>
