@@ -24,12 +24,14 @@ function App() {
    .then(res =>{
      setCoins(res.data);
    }).catch(error => console.log(error));
+    
   }, []);
 
  
 
   const handleChange = e => {
     setSearch(e.target.value)
+   
   };
 
 
@@ -37,16 +39,11 @@ function App() {
 
   const filteredCoins = coins.filter(coin =>
     coin.name.toLowerCase().includes(search.toLowerCase())
-    
+
     );
-     
-    
+
    
     
-
-
-    
- 
 
   return (
     <div className="container mx-auto sm:bg-gradient-to-r from-green-400  to-blue-500 sm:pr-6 sm:pl-6 sm:pt-12 dark:bg-gray-800 transition duration-500 overflow-hidden" >

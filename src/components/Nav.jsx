@@ -1,14 +1,16 @@
 import useDarkMode from "./useDarkMode";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
 export default function Nav() {
     const [colorTheme, setTheme] = useDarkMode()
+    let history = useHistory();
+   
   return (
       <div className="flex flex-row justify-evenly w-full sm:hidden">
-          <Link to="/" className="pl-4">
-                <button id="home-button" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded md:px-8">Home</button>
-            </Link>
+           
+                <button onClick={() => history.goBack()} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded md:px-8">Home</button>
+           
           <span onClick={() => setTheme(colorTheme)} className="w-10 h-10 bg-indigo-500 rounded-full shadow-lg cursor-pointer text-white flex items-center justify-center">
               {colorTheme === "light"?
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

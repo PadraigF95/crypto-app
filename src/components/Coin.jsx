@@ -21,62 +21,42 @@ const Coin = () => {
     const [daily, setDaily] = useState([]);
     const [monthly, setMonthly] = useState([]);
     const [selectedTab, setSelectedTab] = useState(0);
+    const [loading, setLoading] = useState(true);
 
-    const url =`https://api.coingecko.com/api/v3/coins/${id}`;
-    const url2 =`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=eur&days=6&interval=daily`
-    const url3 =`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=eur&days=1&interval=hourly`
-    const url4 =`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=eur&days=29&interval=daily`
+    
+   
+   
 
-    const fetchCoin = async () => {
-        try{
+    useEffect(() => {
+        fetch(`https://api.coingecko.com/api/v3/coins/${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+            setCoin(data)
+            setLoading(false)
+        })
+        fetch(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=eur&days=6&interval=daily`)
+        .then((response2) => response2.json())
+        .then((dailyData) => {
+            setMarket(dailyData)
             
-            const response = await fetch(url);
-            const coin = await response.json();
-
-            setCoin(coin)
+        })
+        fetch(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=eur&days=1&interval=hourly`)
+        .then((response3) => response3.json())
+        .then((hourlyData) => {
+            setDaily(hourlyData)
             
-        }catch(error){
-
-
-        }
-    }
-
-    const fetchMarket = async () => {
-        try{
-
-            const res = await fetch(url2);
-        
-            const market = await res.json();
+        })
+        fetch(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=eur&days=29&interval=daily`)
+        .then((response4) => response4.json())
+        .then((monthlyData) => {
+            setMonthly(monthlyData)
           
-            setMarket(market);
-            
-        }catch(error){
+        })
+        
+    }, [id]);
 
-        }
-    }
+    if(loading) return <h1>Loading...</h1>
 
-    const fetchDaily = async () => {
-        try{
-            const res2 = await fetch(url3);
-            const daily = await res2.json();
-                console.log(daily)
-            setDaily(daily)
-
-        }catch(error){
-        }
-
-    }
-
-    const fetchMonthly = async () => {
-        try{
-            const res3 = await fetch(url4);
-            const monthly = await res3.json()
-            console.log(monthly,'monthly')
-            setMonthly(monthly)
-        }catch(error){
-
-        }
-    }
 
     const handleChange = (event, newValue) => {
         setSelectedTab(newValue)
@@ -84,23 +64,23 @@ const Coin = () => {
     
     
 
-    useEffect(() => {
-        fetchCoin()
-        fetchMarket()
-        fetchDaily()
-        fetchMonthly()
-    }, []);
-
+   
     
 
     const {
         name,
-        image = [],
-        community_data =[],
-        description = [],
-        market_data =[],  
-        links =[],
+        image,
+        community_data,
+        description,
+        market_data,  
+        links,
     } = coin
+    console.log(coin)
+
+    const {
+        prices =[],
+    } = market
+    console.log(market)
 
     const formatData = (prices) => {
         return prices.map((el) => {
@@ -111,17 +91,8 @@ const Coin = () => {
         })
     }
 
-    const {
-        prices =[],
-    } = market
-
-  const { 
     
-  } = daily
-
-    const {
-       
-    } = monthly
+  
 
 
     const newPrices = formatData(prices)
@@ -146,51 +117,9 @@ const Coin = () => {
 const monthlyTime=[];
 const monthlyPrice = [];
 
-if(coin === undefined) {
-    return(
-        <div className="top-1/2 left-1/2">
-            <CircularProgress />
-        </div>
-    )
-}
-    if(market_data.ath === undefined){
-        return(
-            <div className="absolute top-1/2 left-1/2">
-                <CircularProgress />
-            </div>
-        )
-    }else if(links.homepage === undefined){
-        return(
-            <div className="absolute top-1/2 left-1/2">
-                <CircularProgress />
-            </div>
-        )
-    }else if(market_data.circulating_supply === undefined){
-            return(
-                <div className="absolute top-1/2 left-1/2">
-                   <CircularProgress />
-                </div>
-            )
-    }else if(market_data.atl === undefined){
-        return(
-            <div className="absolute top-1/2 left-1/2">
-                <CircularProgress />
-            </div>
-        )
-    }else if(market_data.current_price === undefined){
-        return(
-            <div className="absolute top-1/2 left-1/2">
-                <CircularProgress />
-            </div>
-        )
-    } else if(market_data.market_cap === undefined){
-        return(
-            <div className="absolute top-1/2 left-1/2">
-               <CircularProgress />
-            </div>
-        )
+
   
-    }else if(newPrices === undefined){
+ if(newPrices === undefined){
         return(
             <div className="absolute top-1/2 left-1/2">
                 <CircularProgress />
@@ -211,10 +140,6 @@ if(coin === undefined) {
     } 
     
 
-  
-    // let newDaily = daily.prices;
-    // let thirtydays = monthly.prices
-
     for(let i=0; i<daily.prices.length; i += 1) {
         hourlyTime.push(new Date(daily.prices[i][0]).toLocaleTimeString());
         hourlyPrice.push(daily.prices[i][1])
@@ -228,8 +153,6 @@ if(coin === undefined) {
     
    const ath = market_data.ath.eur;
 
-//    const newLink = links.homepage[0];
-
    const atl = market_data.atl.eur;
 
    const current_price = market_data.current_price.eur;
@@ -239,7 +162,7 @@ if(coin === undefined) {
 
 
     return (
-        <div className="container mx-auto pt-12 h-full bg-white dark:bg-gray-800 dark:text-white">
+        <div key={id} className="container mx-auto pt-12 h-full bg-white dark:bg-gray-800 dark:text-white">
             <Nav /><MobileNav />
             
             <div className="pt-6 ">
